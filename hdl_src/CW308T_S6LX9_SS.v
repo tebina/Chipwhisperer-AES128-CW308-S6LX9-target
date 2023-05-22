@@ -62,34 +62,37 @@ module CW308T_S6LX9_Example(
   
 	/* Loopback test */	
     //assign enc_output = enc_input;
-    //assign enc_output_ready = load_input;
+    //assign load_input = enc_output_ready;
    
-	
 	wire enc_busy;
 	assign IO4 = enc_busy;
-	
 	/* To use this example AES core:
 		 - We need to generate our own flag indicating when output data is valid
 	*/
-	aes_core AESGoogleVault(
-		.clk(clk),
-		.load_i(enc_go),
-		.key_i({enc_key, 128'h0}),
-		.data_i(enc_input),
-		.size_i(2'd0),
-		.dec_i(1'b0),
-		.data_o(enc_output),
-		.busy_o(enc_busy)
-	);
+//	aes_core AESGoogleVault(
+//		.clk(clk),
+//		.load_i(enc_go),
+//		.key_i({enc_key, 128'h0}),
+//		.data_i(enc_input),
+//		.size_i(2'd0),
+//		.dec_i(1'b0),
+//		.data_o(enc_output),
+//		.busy_o(enc_busy)
+//	);
 	
-	//Generate single-clock cycle pulse when enc_busy falls
-	reg enc_done_flag;
-	reg enc_busy_delayed;
-	always @(posedge clk) enc_busy_delayed <= enc_busy;
-	always @(posedge clk) begin
-		enc_done_flag <= ~enc_busy & enc_busy_delayed;
-	end
+	AES_128_ENCRYPT AES_128_ENCRYPT(
+            .SYS_CLK(clk),
+            .RST(1'b0),
+				.PLAINTEXT_IN(enc_input), 
+				.KEY_IN(enc_key),
+				.START(enc_go), 
+				.KEY_LOAD(load_key), 
+				.NEAR_DONE(), 
+				.DONE(enc_output_ready), 
+				.BUSY(enc_busy), 
+ 				.CIPHERTEXT_OUT(enc_output)	
+ 				);
 	
-	assign enc_output_ready = enc_done_flag;
+
   
 endmodule
