@@ -123,9 +123,9 @@ begin
   begin
     if (SYS_CLK'event and SYS_CLK = '1') then
       if (RST = '1') then
-        KEY_BUF <= (X"00000000", X"00000000", X"00000000", X"00000000");
+        KEY_BUF <= (others => '0') ;
       elsif (KEY_LOAD = '1' and BUSY_BUF = '0') then
-        KEY_BUF <= (KEY_IN(127 downto 96), KEY_IN(95 downto 64), KEY_IN(63 downto 32), KEY_IN(31 downto 0));
+        KEY_BUF <= KEY_IN;
       end if;
     end if;
   end process;
