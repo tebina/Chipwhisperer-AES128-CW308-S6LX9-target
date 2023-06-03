@@ -35,8 +35,8 @@
 #        when this script was generated.
 # 
 
-set myProject "AES128_encryption_SS1"
-set myScript "AES128_encryption_SS1.tcl"
+set myProject "SBox128_encryption_SS1"
+set myScript "SBox128_encryption_SS1.tcl"
 
 # 
 # Main (top-level) routines
@@ -230,14 +230,9 @@ proc add_source_files {} {
    }
 
    puts "$myScript: Adding sources to project..."
-
-   xfile add "../hdl_src/AES/AES_128.vhd"
+   xfile add "../hdl_src/AES/SBox128_top.vhd"
    xfile add "../hdl_src/AES/AES_Constants.vhd"
    xfile add "../hdl_src/AES/AddRoundKey.vhd"
-   xfile add "../hdl_src/AES/Column_Matrix_Mul.vhd"
-   xfile add "../hdl_src/AES/Key_Schedule_128.vhd"
-   xfile add "../hdl_src/AES/MixedColumns.vhd"
-   xfile add "../hdl_src/AES/ShiftRows.vhd"
    xfile add "../hdl_src/AES/SubBytes.vhd"
    xfile add "../hdl_src/CW308T_S6LX9_SS.v"
    xfile add "../hdl_src/SimpleSerial.v"
