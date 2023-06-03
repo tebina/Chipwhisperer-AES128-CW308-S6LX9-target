@@ -1,5 +1,13 @@
 # Documentation for: AES_Sbox
 
+# Build the Xilinx ISE project by running
+
+```shell
+$ cd ss_aes_ise
+$ xtclsh SBox128_encryption_SS1.tcl rebuild_project
+```
+
+
 ![system](./doc/dependency_graph.svg "System")
 ## Designs
 
