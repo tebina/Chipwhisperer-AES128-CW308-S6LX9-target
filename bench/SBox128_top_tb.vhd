@@ -78,7 +78,6 @@ begin
     START <= '1';
     wait for SYS_CLK_period;
     START <= '0';
-    wait until DONE = '0';
     wait until DONE = '1';
     assert CIPHERTEXT_OUT = CORRECT_OUTPUT
     report "TEST 1 FAILED"
@@ -95,7 +94,6 @@ begin
     START <= '1';
     wait for SYS_CLK_period;
     START <= '0';
-    wait until DONE = '0';
     wait until DONE = '1';
     assert CIPHERTEXT_OUT = CORRECT_OUTPUT
     report "TEST 2 FAILED"
@@ -112,7 +110,6 @@ begin
     START <= '1';
     wait for SYS_CLK_period;
     START <= '0';
-    wait until DONE = '0';
     wait until DONE = '1';
     assert CIPHERTEXT_OUT = CORRECT_OUTPUT
     report "TEST 3 FAILED"
@@ -129,7 +126,6 @@ begin
     START <= '1';
     wait for SYS_CLK_period;
     START <= '0';
-    wait until DONE = '0';
     wait until DONE = '1';
     assert CIPHERTEXT_OUT = CORRECT_OUTPUT
     report "TEST 4 FAILED"
@@ -146,7 +142,6 @@ begin
     START <= '1';
     wait for SYS_CLK_period;
     START <= '0';
-    wait until DONE = '0';
     wait until DONE = '1';
     assert CIPHERTEXT_OUT = CORRECT_OUTPUT
     report "TEST 5 FAILED"
@@ -163,7 +158,6 @@ begin
     START <= '1';
     wait for SYS_CLK_period; ---Examples of Continuous Loading
     START <= '0';
-    wait until DONE = '0';
     wait until DONE = '1';
     assert CIPHERTEXT_OUT = CORRECT_OUTPUT
     report "TEST 6 FAILED"
@@ -177,7 +171,6 @@ begin
     START <= '1';
     wait for SYS_CLK_period * 10;
     CORRECT_OUTPUT <= X"993a6edd2a52402edf3a92d978eacad0";
-    wait until DONE = '0';
     wait until DONE = '1';
     assert CIPHERTEXT_OUT = CORRECT_OUTPUT
     report "TEST 7 FAILED"
