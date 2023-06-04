@@ -145,7 +145,7 @@ begin
   begin
     if (SYS_CLK'event and SYS_CLK = '1') then
       if (PR_STATE = RESET_1 or PR_STATE = RESET_2 or PR_STATE = IDLE) then
-        OPN_COUNT <= "11"; --Step Counter Starts on 3 to correspond to AddRoundKey step at very start of cipher
+        OPN_COUNT <= "00"; --Step Counter Starts on 3 to correspond to AddRoundKey step at very start of cipher
       else
         OPN_COUNT <= OPN_COUNT + 1; ---Always increment when processing
       end if;
